@@ -1,0 +1,171 @@
+<ion-content class="custom" [fullscreen]="true">
+    <div class="min-h-screen p-4 ">
+        <ion-fab slot="fixed" horizontal="end" vertical="top">
+            <ion-fab-button (click)="onScanClick()">
+                <img class="w-9" src="/assets/scanner.svg" alt="" />
+            </ion-fab-button>
+        </ion-fab>
+        <div class="flex items-center justify-center">
+            <div
+                class="w-fit flex items-center justify-center mb-2 bg-slate-400 p-1 image"
+                (click)="onTakePhotoClick()"
+            >
+                <img class="w-32 h-32 image" [src]="this.userImage" alt="" />
+                <img
+                    class="w-9 fixed -translate-x-10 translate-y-10"
+                    src="/assets/addPhoto.svg"
+                    alt=""
+                />
+            </div>
+        </div>
+        <form [formGroup]="credentials" class="space-y-6 text-xl">
+            <!-- Apellidos -->
+            <div class="relative">
+                <ion-input
+                    fill="solid"
+                    placeholder="Apellidos"
+                    formControlName="apellidos"
+                    class="bg-gray-100 rounded-lg border border-gray-300 custom w-full"
+                ></ion-input>
+                @if(apellidos && apellidos.touched && apellidos.errors) {
+                <ion-note
+                    slot="error"
+                    color="danger"
+                    class="absolute -bottom-6 text-red-500 text-lg"
+                    >Campo requerido</ion-note
+                >
+                }
+            </div>
+
+            <!-- Nombres -->
+            <div class="relative">
+                <ion-input
+                    fill="solid"
+                    placeholder="Nombres"
+                    formControlName="nombres"
+                    class="bg-gray-100 rounded-lg border border-gray-300 custom w-full"
+                ></ion-input>
+                @if(nombres && nombres.touched && nombres.errors) {
+                <ion-note
+                    slot="error"
+                    color="danger"
+                    class="absolute -bottom-6 text-red-500 text-lg"
+                    >Campo requerido</ion-note
+                >
+                }
+            </div>
+
+            <!-- DNI -->
+            <div class="relative">
+                <ion-input
+                    fill="solid"
+                    placeholder="DNI"
+                    formControlName="dni"
+                    type="number"
+                    class="bg-gray-100 rounded-lg border border-gray-300 custom w-full"
+                ></ion-input>
+                @if(dni && dni.touched && dni.errors) {
+                <ion-note
+                    slot="error"
+                    color="danger"
+                    class="absolute -bottom-6 text-red-500 text-lg"
+                    >Longitud de 8 digitos</ion-note
+                >
+                }
+            </div>
+
+            <!-- Correo -->
+            <div class="relative">
+                <ion-input
+                    fill="solid"
+                    placeholder="Correo"
+                    formControlName="correo"
+                    class="bg-gray-100 rounded-lg border border-gray-300 custom w-full text-xl"
+                ></ion-input>
+                @if(correo && correo.touched && correo.errors) {
+                <ion-note
+                    slot="error"
+                    color="danger"
+                    class="absolute -bottom-6 text-red-500 text-lg"
+                    >Correo no válido</ion-note
+                >
+                }
+            </div>
+
+            <!-- Clave -->
+            <div class="relative">
+                <ion-input
+                    fill="solid"
+                    placeholder="Contraseña"
+                    type="password"
+                    formControlName="clave1"
+                    class="bg-gray-100 rounded-lg border border-gray-300 custom w-full"
+                >
+                    <ion-input-password-toggle
+                        slot="end"
+                    ></ion-input-password-toggle>
+                </ion-input>
+                @if(clave1 && clave1.touched && clave1.errors) {
+                <ion-note
+                    slot="error"
+                    color="danger"
+                    class="absolute -bottom-6 text-red-500 text-lg"
+                    >Campo requerido</ion-note
+                >
+                }
+            </div>
+
+            <!-- Repetir Clave -->
+            <div class="relative">
+                <ion-input
+                    fill="solid"
+                    placeholder="Repetir Contraseña"
+                    type="password"
+                    formControlName="clave2"
+                    class="bg-gray-100 rounded-lg border border-gray-300 custom w-full"
+                >
+                    <ion-input-password-toggle
+                        slot="end"
+                    ></ion-input-password-toggle>
+                </ion-input>
+                @if(clave2 && clave2.touched && clave2.errors) {
+                <ion-note
+                    slot="error"
+                    color="danger"
+                    class="absolute -bottom-6 text-red-500 text-lg"
+                    >Las contraseñas no coinciden</ion-note
+                >
+                }
+            </div>
+
+            <!-- Botón de Registro -->
+            <div class="text-center">
+                <ion-button
+                    [disabled]="!credentials.valid"
+                    expand="block"
+                    class="bg-blue-600 text-white rounded-lg py-3 w-full text-2xl"
+                    (click)="addUser()"
+                    >Añadir</ion-button
+                >
+            </div>
+        </form>
+        @if(this.loading) {
+        <ion-spinner
+            color="light"
+            name="lines-sharp-small"
+            style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 99999;
+                display: inherit;
+                margin: auto;
+                width: 8cm;
+                height: 8cm;
+                margin-top: 2rem;
+            "
+        ></ion-spinner>
+        }
+    </div>
+</ion-content>

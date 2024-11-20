@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>Gestión de usuarios</ion-title>
+        <ion-button
+            slot="end"
+            class="mr-2"
+            color="danger"
+            (click)="this.logout()"
+        >
+            <img src="/assets/LogoutIcon.svg" class="w-6 h-auto" alt="" />
+        </ion-button>
+    </ion-toolbar>
+</ion-header>
+
+<div class="flex flex-col justify-center items-center h-full m-3">
+    <ion-button
+        strong="true"
+        class="flex flex-col text-4xl w-full h-full"
+        [disabled]="this.authService.currentUserSig()?.role !== 'admin'"
+        (click)="onAddUserClick()"
+        routerLink="/add-user"
+    >
+        <span class="w-full">Añadir usuario</span>
+    </ion-button>
+    <ion-button
+        strong="true"
+        color="tertiary"
+        class="flex flex-col text-4xl w-full h-full"
+        routerLink="/users"
+    >
+        <span class="w-full">Ver usuarios</span>
+    </ion-button>
+</div>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Gestion de usuarios</string>
+    <string name="title_activity_main">Gestion de usuarios</string>
+    <string name="package_name">io.ionic.gestion</string>
+    <string name="custom_url_scheme">io.ionic.gestion</string>
+</resources>

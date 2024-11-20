@@ -1,0 +1,25 @@
+ion-input.custom {
+    --background: #656665;
+	--background-focused: #88f4be;
+	--background-activated: #88f4be;
+    --color: #ffffff;
+    --placeholder-color: #ddd;
+    --placeholder-opacity: 0.8;
+
+    --padding-bottom: 2px;
+    --padding-end: 10px;
+    --padding-start: 10px;
+    --padding-top: 2px;
+}
+
+.image{
+	border-radius: 50%;
+}
+
+html, body {
+  background-color: #f3f4f6; /* bg-gray-100 */
+}
+
+ion-content.custom {
+	--background: #f3f4f6;
+}

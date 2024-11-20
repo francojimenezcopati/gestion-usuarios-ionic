@@ -1,0 +1,85 @@
+<main class=" flex flex-col justify-center items-center  px-8 text-2xl">
+    <div class="bg-yellow-200 shadow-lg rounded-lg p-6 mx-auto w-full max-w-md">
+        <h1 class="text-center text-4xl font-bold text-blue-600 mb-8">
+            Iniciar Sesión
+        </h1>
+        <form [formGroup]="credentials" class="space-y-7">
+            <div class="relative">
+                <ion-input
+                    label="Correo"
+                    labelPlacement="stacked"
+                    fill="solid"
+                    placeholder="ejemplo@gmail.com"
+                    formControlName="email"
+                    class="bg-gray-100 p-3 rounded-lg border border-gray-300 w-full h-[77px]"
+                ></ion-input>
+                @if(email && email.touched && email.errors) {
+                <ion-note
+                    slot="error"
+                    color="danger"
+                    class="absolute -bottom-7 text-red-500 text-lg"
+                    >Correo no válido</ion-note
+                >
+                }
+            </div>
+            <div class="relative">
+                <ion-input
+                    label="Contraseña"
+                    labelPlacement="stacked"
+                    fill="solid"
+                    placeholder="Contraseña"
+                    type="password"
+                    formControlName="password"
+                    class="bg-gray-100 p-3 rounded-lg border border-gray-300 w-full"
+                >
+                    <ion-input-password-toggle
+                        slot="end"
+                    ></ion-input-password-toggle>
+                </ion-input>
+                @if(password && password.touched && password.errors) {
+                <ion-note
+                    slot="bottom"
+                    color="danger"
+                    class="absolute -bottom-7 text-red-500 text-lg"
+                    >Mínimo 6 caracteres</ion-note
+                >
+                }
+            </div>
+            <div class="text-center mt-8">
+                <ion-button
+                    [disabled]="!credentials.valid"
+                    expand="block"
+                    class="bg-blue-600 text-white rounded-lg py-3 w-full text-2xl"
+                    (click)="login()"
+                    >Iniciar Sesión</ion-button
+                >
+            </div>
+        </form>
+        <div class="flex justify-around mt-8">
+            <ion-button
+                expand="full"
+                class="bg-gray-100 flex flex-col items-center p-3 w-20 rounded-lg"
+                (click)="fillInGuest('1')"
+            >
+                <img src="/assets/adminIcon.svg"  class="w-15 h-15" alt="" />
+                <span class="text-lg font-medium">1</span>
+            </ion-button>
+            <ion-button
+                expand="full"
+                class="bg-gray-100 flex flex-col items-center p-4 w-20 rounded-lg"
+                (click)="fillInGuest('2')"
+            >
+                <img src="/assets/userIcon.svg" class="w-10 h-10" alt="" />
+                <span class="text-lg font-medium">2</span>
+            </ion-button>
+            <ion-button
+                expand="full"
+                class="bg-gray-100 flex flex-col items-center p-4 w-20 rounded-lg"
+                (click)="fillInGuest('3')"
+            >
+                <img src="/assets/userIcon.svg" class="w-10 h-10" alt="" />
+                <span class="text-lg font-medium">3</span>
+            </ion-button>
+        </div>
+    </div>
+</main>
